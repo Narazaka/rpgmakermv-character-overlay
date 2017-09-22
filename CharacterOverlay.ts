@@ -718,13 +718,22 @@ interface Game_System {
                 const height = Number(params[`height${index}`]);
                 const horizontalAlign = params[`horizontalAlign${index}`] as CharacterOverlayHorizontalAlign;
                 const verticalAlign = params[`verticalAlign${index}`] as CharacterOverlayVerticalAlign;
-                const top = params[`top${index}`] == null ? undefined : Number(params[`top${index}`]);
-                const bottom = params[`bottom${index}`] == null ? undefined : Number(params[`bottom${index}`]);
+                const top =
+                    params[`top${index}`] == null || !params[`top${index}`].length ?
+                    undefined :
+                    Number(params[`top${index}`]);
+                const bottom =
+                    params[`bottom${index}`] == null || !params[`bottom${index}`].length ?
+                    undefined :
+                    Number(params[`bottom${index}`]);
                 // tslint:disable-next-line no-eval
                 const active = eval(params[`active${index}`] || "true");
                 // tslint:disable-next-line no-eval
                 const visible = eval(params[`visible${index}`] || "true");
-                const alpha = params[`alpha${index}`] == null ? undefined : Number(params[`alpha${index}`]);
+                const alpha =
+                    params[`alpha${index}`] == null || !params[`alpha${index}`].length ?
+                    undefined :
+                    Number(params[`alpha${index}`]);
                 const characterOverlay = new CharacterOverlay(
                     characterName,
                     partsNames,

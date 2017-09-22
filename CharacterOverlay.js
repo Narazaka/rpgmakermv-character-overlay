@@ -643,13 +643,19 @@ var CharacterOverlayGroup = /** @class */ (function () {
                 var height = Number(params["height" + index]);
                 var horizontalAlign = params["horizontalAlign" + index];
                 var verticalAlign = params["verticalAlign" + index];
-                var top_1 = params["top" + index] == null ? undefined : Number(params["top" + index]);
-                var bottom = params["bottom" + index] == null ? undefined : Number(params["bottom" + index]);
+                var top_1 = params["top" + index] == null || !params["top" + index].length ?
+                    undefined :
+                    Number(params["top" + index]);
+                var bottom = params["bottom" + index] == null || !params["bottom" + index].length ?
+                    undefined :
+                    Number(params["bottom" + index]);
                 // tslint:disable-next-line no-eval
                 var active = eval(params["active" + index] || "true");
                 // tslint:disable-next-line no-eval
                 var visible = eval(params["visible" + index] || "true");
-                var alpha = params["alpha" + index] == null ? undefined : Number(params["alpha" + index]);
+                var alpha = params["alpha" + index] == null || !params["alpha" + index].length ?
+                    undefined :
+                    Number(params["alpha" + index]);
                 var characterOverlay = new CharacterOverlay(characterName, partsNames, width, height, {
                     horizontalAlign: horizontalAlign,
                     verticalAlign: verticalAlign,
