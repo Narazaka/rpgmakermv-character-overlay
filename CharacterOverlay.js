@@ -217,10 +217,6 @@ var CharacterOverlay = /** @class */ (function () {
         this.visible = visible;
         this.alpha = alpha;
         this.onDraw = onDraw;
-        var i = this.partsNames.length;
-        var container = this.container;
-        while (i--)
-            container.addChild(new PIXI.Container()); // layers
         if (partsState)
             this.setParts(partsState);
     }
@@ -374,6 +370,11 @@ var CharacterOverlay = /** @class */ (function () {
     };
     CharacterOverlay.prototype.drawParts = function () {
         var container = this.container;
+        if (!container.children.length) {
+            var i = this.partsNames.length;
+            while (i--)
+                container.addChild(new PIXI.Container()); // layers
+        }
         var index = 0;
         if (!this.drawnPartsState)
             this.drawnPartsState = {};

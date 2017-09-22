@@ -269,9 +269,6 @@ class CharacterOverlay {
         this.visible = visible;
         this.alpha = alpha;
         this.onDraw = onDraw;
-        let i = this.partsNames.length;
-        const container = this.container;
-        while (i--) container.addChild(new PIXI.Container()); // layers
         if (partsState) this.setParts(partsState);
     }
 
@@ -412,6 +409,10 @@ class CharacterOverlay {
 
     private drawParts() {
         const container = this.container;
+        if (!container.children.length) {
+            let i = this.partsNames.length;
+            while (i--) container.addChild(new PIXI.Container()); // layers
+        }
         let index = 0;
         if (!this.drawnPartsState) this.drawnPartsState = {};
         for (const partsName of this.partsNames) {
